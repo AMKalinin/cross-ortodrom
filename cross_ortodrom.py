@@ -1,11 +1,4 @@
 import numpy as np
-from scipy.optimize import fsolve
-
-
-p1 = np.array([55+45/60+7/3600, 37+36/60+56/3600])
-p2 = np.array([59 + 53/60 + 39/3600, 30+19/60])
-p3 = np.array([53+53/60+59/3600, 27+34/60])
-p4 = np.array([59+13/60+26/3600, 39+53/60+2/3600])
 
 def distance_between_coord(p1,p2):
 
@@ -26,29 +19,9 @@ def distance_between_coord(p1,p2):
     p1 = np.sin(delta_lambda) * np.cos(y2)
     p2 = np.cos(y1) * np.sin(y2) - np.sin(y1) * np.cos(y2) * np.cos(delta_lambda)
     q = np.sin(y1) * np.sin(y2) + np.cos(y1) * np.cos(y2) * np.cos(delta_lambda)
-    return abs(np.arctan2(np.sqrt(p1**2 + p2**2), q) * R)
+    res = np.arctan2(np.sqrt(p1**2 + p2**2), q)
+    return abs(res * R)
 
-# def distance_between_coord(p1,p2):
-
-#     """ Расстояние в метрах между точками в градусах.
-#     y -- широта, x -- долгота."""
-
-#     y1, x1 = p1 
-#     y2, x2 = p2
-
-#     x1 = np.radians(x1)
-#     x2 = np.radians(x2)
-#     y1 = np.radians(y1)
-#     y2 = np.radians(y2)
-
-#     v = np.sin(y1)*np.sin(y2)+np.cos(y1)*np.cos(y2)*np.cos(x1-x2)
-#     if v >= 1:
-#         m = 0
-#     elif v <= -1:
-#         m = 10800
-#     else:
-#         m = 10800*np.arccos(v)/np.pi/0.00053996
-#     return m
 
 def formula1(start1, end1, start2, end2):
     p1_r = np.deg2rad(start1)
@@ -123,7 +96,6 @@ def formula1(start1, end1, start2, end2):
         else:
             print("что-то не так")
 
-print(formula1(p1,p2,p3,p4))
 
 p1 = np.array([-4.167194, -75.211180])
 p2 = np.array([-19.592274, -43.821958])
@@ -133,9 +105,9 @@ print(formula1(p1,p2,p3,p4))
 
 
 
-p1 = np.array([70.85974052371462, -125.37596200099908])
-p2 = np.array([52.03095389264921, -65.81547861334019])
-p3 = np.array([65.92435905335503, -138.11013842217648])
-p4 = np.array([69.96831459928825, -84.59435903191195])
+# p1 = np.array([70.85974052371462, -125.37596200099908])
+# p2 = np.array([52.03095389264921, -65.81547861334019])
+# p3 = np.array([65.92435905335503, -138.11013842217648])
+# p4 = np.array([69.96831459928825, -84.59435903191195])
 
-print(formula1(p1,p2,p3,p4))
+# print(formula1(p1,p2,p3,p4))
