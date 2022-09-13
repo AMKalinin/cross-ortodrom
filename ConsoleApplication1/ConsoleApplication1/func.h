@@ -1,6 +1,4 @@
 #pragma once
-#pragma once
-
 
 #include <vector>
 #include <math.h>
@@ -18,8 +16,7 @@ double distance_between_coord(std::vector<double> point1, std::vector<double> po
 	double p1 = sin(delta_lambda) * cos(phi2);
 	double p2 = cos(phi1) * sin(phi2) - sin(phi1) * cos(phi2) * cos(delta_lambda);
 	double q = sin(phi1) * sin(phi2) + cos(phi1) * cos(phi2) * cos(delta_lambda);
-	double res1 = atan2(sqrt(p1 * p1 + p2 * p2), q);
-	double res = abs(res1 * R);
+	double res = abs(atan2(sqrt(p1 * p1 + p2 * p2), q) * R);
 	return res;
 }
 
@@ -79,13 +76,18 @@ bool proverka_tochki(std::vector<double> start1, std::vector<double> end1, std::
 	double dist_posle_2 = distance_between_coord(point, end2);
 
 	double a = obsh_dist_1 - dist_do_1 - dist_posle_1;
+	if (a > 0.0000001 || a < -0.000001) { return false; }
+
 	double b = obsh_dist_2 - dist_do_2 - dist_posle_2;
+	if (b > 0.0000001 || b < -0.000001) { return false; }
+	
 	double c = abs(a - b);
-	if (c < 0.01) { return true; }
+	if (c < 0.0000001) { return true; }
 	else { return false; }
 }
 
 std::vector<double> intersection_ortodrom(std::vector<double> start1, std::vector<double> end1, std::vector<double> start2, std::vector<double> end2)
+// Если размер возвращаемого вектора равен 1, то пересечения нет. 
 {
 	std::vector<double> p1 = GEO_GSK(start1);
 	std::vector<double> p2 = GEO_GSK(end1);
@@ -111,18 +113,13 @@ std::vector<double> intersection_ortodrom(std::vector<double> start1, std::vecto
 	{
 		return p1;
 	}
-	else
+
+	if (proverka_tochki(start1, end1, start2, end2, p2))
 	{
-		if (proverka_tochki(start1, end1, start2, end2, p2))
-		{
-			return p2;
-		}
-		else
-		{
-			std::vector<double> er = { 1 };
-			return er;
-		}
+		return p2;
 	}
+	std::vector<double> er = { 1 };
+	return er;
 
 }
 

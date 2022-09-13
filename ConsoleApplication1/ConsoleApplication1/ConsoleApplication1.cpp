@@ -7,25 +7,93 @@
 
 int main()
 {
-
-    std::vector<double> p1 = { -4.167194 / 180 * 3.14, -75.211180 / 180 * 3.14 };
-    std::vector<double> p2 = { -19.592274 / 180 * 3.14, -43.821958 / 180 * 3.14 };
-    std::vector<double> p3 = { -6.340083 / 180 * 3.14, -37.593191 / 180 * 3.14 };
-    std::vector<double> p4 = { -18.879524 / 180 * 3.14, -101.986141 / 180 * 3.14 };
-
-    intersection_ortodrom(p1, p2, p3, p4);
+    double RAD_DEG = 180 / 3.14;
+    double DEG_RAD = 3.14 / 180;
 
 
-    std::cout << "Hello World!\n";
+    std::vector<double> p1 = { 67.85602632628772 * DEG_RAD, -139.78658419419955 * DEG_RAD };
+    std::vector<double> p2 = { 19.26225699268021 * DEG_RAD, 4.178247318013565 * DEG_RAD };
+    std::vector<double> p3 = { 71.94934558251 * DEG_RAD, -17.442844594077023 * DEG_RAD };
+    std::vector<double> p4 = { -13.290356075967138 * DEG_RAD, -99.88424383611364 * DEG_RAD };
+
+    std::vector<double> v = intersection_ortodrom(p1, p2, p3, p4);
+
+    if (v.size() == 1)
+    {
+        std::cout << "Net peresecheniya\n";
+    }
+    else
+    {
+        std::cout << v[0] * RAD_DEG;
+        std::cout << "\n";
+        std::cout << v[1] * RAD_DEG;
+        std::cout << "\n";
+        std::cout << "********************************\n";
+    }
+
+
+
+
+    p1 = { 55.760436596101535 * DEG_RAD, 37.596834268267 * DEG_RAD };
+    p2 = { 57.4941433302542 * DEG_RAD, 31.737946408548172 * DEG_RAD };
+    p3 = { 55.760436596101535 * DEG_RAD, 37.596834268267 * DEG_RAD };
+    p4 = { 56.97220892371373 * DEG_RAD, 39.992237977284795 * DEG_RAD };
+
+    v = intersection_ortodrom(p1, p2, p3, p4);
+
+    if (v.size() == 1) 
+    {
+        std::cout << "Net peresecheniya\n";
+    }
+    else 
+    {
+        std::cout << v[0] * RAD_DEG;
+        std::cout << "\n";
+        std::cout << v[1] * RAD_DEG;
+        std::cout << "\n";
+        std::cout << "********************************\n";
+    }
+
+
+    p1 = { -85.0 * DEG_RAD, 0.0 * DEG_RAD };
+    p2 = { -85.0 * DEG_RAD, 180.0 * DEG_RAD };
+    p3 = { -85.0 * DEG_RAD, 30.0 * DEG_RAD };
+    p4 = { -85.0 * DEG_RAD, -150 * DEG_RAD };
+
+    v = intersection_ortodrom(p1, p2, p3, p4);
+
+    if (v.size() == 1)
+    {
+        std::cout << "Net peresecheniya\n";
+    }
+    else
+    {
+        std::cout << v[0] * RAD_DEG;
+        std::cout << "\n";
+        std::cout << v[1] * RAD_DEG;
+        std::cout << "\n";
+        std::cout << "********************************\n";
+    }
+
+
+    p1 = { 39.25752072616424 * DEG_RAD, -111.74149012317523 * DEG_RAD };
+    p2 = { 36.482873364916806 * DEG_RAD, 55.07490194653163 * DEG_RAD };
+    p3 = { 39.25752072616424 * DEG_RAD, -102.95242837029288 * DEG_RAD };
+    p4 = { 36.341410313321056 * DEG_RAD, 47.51630883905283 * DEG_RAD };
+
+    v = intersection_ortodrom(p1, p2, p3, p4);
+
+    if (v.size() == 1)
+    {
+        std::cout << "Net peresecheniya\n";
+    }
+    else
+    {
+        std::cout << v[0] * RAD_DEG;
+        std::cout << "\n";
+        std::cout << v[1] * RAD_DEG;
+        std::cout << "\n";
+        std::cout << "********************************\n";
+    }
+    
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
